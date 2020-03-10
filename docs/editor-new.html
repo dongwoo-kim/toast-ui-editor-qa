@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title>TOAST UI Editor 2.0</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.33.0/codemirror.css"
+    />
+    <link rel="stylesheet" href="./dist/toastui-editor.css" />
+    <style>
+    html, body { height: 100%; margin: 0; padding: 0 }
+    .container {
+      display: flex;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 1em;
+      flex-direction: column;
+    }
+    .container > h1 {
+      padding: 0.4em;
+      margin: 0;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>TOAST UI Editor 2.0 Demo</h1>
+      <div id="editor"></div>
+    </div>
+    <script src="./dist/toastui-editor-all.js"></script>
+    <script class="code-js">
+      var editor = new toastui.Editor({
+        el: document.querySelector('#editor'),
+        previewStyle: 'vertical',
+        height: '100%',
+        initialEditType: 'markdown',
+        useCommandShortcut: true
+      });
+    </script>
+  </body>
+</html>
