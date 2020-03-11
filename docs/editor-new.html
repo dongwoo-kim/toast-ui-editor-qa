@@ -39,9 +39,9 @@
     <script src="./dist/toastui-editor-plugin-code-syntax-highlight-all.min.js"></script>
     <script src="./dist/toastui-editor-plugin-color-syntax.min.js"></script>
     <script src="./dist/toastui-editor-plugin-uml.min.js"></script>
-    <script class="code-js">
-    const { Editor } = toastui;
-    const { chart, uml, codeSyntaxHighlight, colorSyntax } = Editor.plugin;
+    <script>
+      var Editor = toastui.Editor;
+      var plugin = Editor.plugin;
 
       var editor = new Editor({
         el: document.querySelector('#editor'),
@@ -49,7 +49,7 @@
         height: '100%',
         initialEditType: 'markdown',
         useCommandShortcut: true,
-        plugins: [ uml, codeSyntaxHighlight, colorSyntax ]
+        plugins: [ plurin.uml, plurin.codeSyntaxHighlight, plugin.colorSyntax ]
       });
     </script>
   </body>
