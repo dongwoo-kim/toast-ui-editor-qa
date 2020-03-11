@@ -8,6 +8,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.33.0/codemirror.css"
     />
     <link rel="stylesheet" href="./dist/toastui-editor.css" />
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.chart/v3.7.0/tui-chart.css" />
+    <link
+      rel="stylesheet"
+      href="https://uicdn.toast.com/tui-color-picker/v2.2.6/tui-color-picker.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
     <style>
     html, body { height: 100%; margin: 0; padding: 0 }
     .container {
@@ -28,14 +34,22 @@
       <h1>TOAST UI Editor 2.0 Demo</h1>
       <div id="editor"></div>
     </div>
-    <script src="./dist/toastui-editor-all.js"></script>
+    <script src="./dist/toastui-editor-all.min.js"></script>
+    <script src="./dist/toastui-editor-plugin-chart.min.js"></script>
+    <script src="./dist/toastui-editor-plugin-code-syntax-highlight-all.min.js"></script>
+    <script src="./dist/toastui-editor-plugin-color-syntax.min.js"></script>
+    <script src="./dist/toastui-editor-plugin-uml.min.js"></script>
     <script class="code-js">
-      var editor = new toastui.Editor({
+    const { Editor } = toastui;
+    const { chart, uml, codeSyntaxHighlight, colorSyntax } = Editor.plugin;
+
+      var editor = new Editor({
         el: document.querySelector('#editor'),
         previewStyle: 'vertical',
         height: '100%',
         initialEditType: 'markdown',
-        useCommandShortcut: true
+        useCommandShortcut: true,
+        plugins: [ uml, codeSyntaxHighlight, colorSyntax ]
       });
     </script>
   </body>

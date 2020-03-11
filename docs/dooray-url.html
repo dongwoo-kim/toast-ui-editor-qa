@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title>두레이 이미지 경로 변경</title>
+    <style>
+    html, body { height: 100%; margin: 0; padding: 0 }
+    .container {
+      display: flex;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 1em;
+      flex-direction: column;
+    }
+    .container > h1 {
+      padding: 0.4em;
+      margin: 0;
+    }
+    .inner {
+      height: 100%;
+      display: flex;
+    }
+    .inner > textarea {
+      flex: 1 
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>두레이 이미지 경로 변경 <button class="btn-apply">변경</button></h1>
+      <div class="inner">
+        <textarea class="input"></textarea>
+        <textarea class="output" readonly></textarea> 
+      </div>
+    </div>
+    <script>
+    function replaceUrl(inputText) {
+      return inputText.replace(/\((\/files\/\d+)\)/g, '(http://nhnent.dooray.com$1)');
+    }
+
+    document.querySelector('.btn-apply').addEventListener('click', function() {
+      var inputText = document.querySelector('.input').value;
+      var outputEl = document.querySelector('.output').value = replaceUrl(inputText);
+    });
+    </script>
+  </body>
+</html>

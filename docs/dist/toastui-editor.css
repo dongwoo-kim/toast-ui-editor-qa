@@ -969,7 +969,7 @@
 }
 
 .CodeMirror .cm-variable-2 {
-  /* color: inherit; */
+  color: inherit;
 }
 
 .tui-editor-pseudo-clipboard {

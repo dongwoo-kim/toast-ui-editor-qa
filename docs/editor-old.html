@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title>TOAST UI Editor 1.4.10 Demo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.33.0/codemirror.css"
+    />
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.chart/v3.7.0/tui-chart.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui-color-picker/v2.2.1/tui-color-picker.css">
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui-editor/latest/tui-editor.css" />
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui-editor/latest/tui-editor-contents.css" />
+    <style>
+    html, body { height: 100%; margin: 0; padding: 0 }
+    .container {
+      display: flex;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 1em;
+      flex-direction: column;
+    }
+    .container > h1 {
+      padding: 0.4em;
+      margin: 0;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>TOAST UI Editor 1.4.10 Demo</h1>
+      <div id="editor"></div>
+    </div>
+    <script src="https://uicdn.toast.com/tui-editor/latest/tui-editor-Editor-full.js"></script>
+    <script class="code-js">
+      var editor = new tui.Editor({
+        el: document.querySelector('#editor'),
+        previewStyle: 'vertical',
+        height: '100%',
+        initialEditType: 'markdown',
+        useCommandShortcut: true,
+        exts: [
+          'uml',
+          'colorSyntax',
+          'chart',
+          'scrollSync'
+        ]
+      });
+    </script>
+  </body>
+</html>
