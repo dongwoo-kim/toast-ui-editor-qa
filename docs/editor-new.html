@@ -39,6 +39,7 @@
     <script src="./dist/toastui-editor-plugin-code-syntax-highlight-all.min.js"></script>
     <script src="./dist/toastui-editor-plugin-color-syntax.min.js"></script>
     <script src="./dist/toastui-editor-plugin-uml.min.js"></script>
+    <script src="./dist/toastui-editor-plugin-table-merged-cell.min.js"></script>
     <script>
       var Editor = toastui.Editor;
       var plugin = Editor.plugin;
@@ -49,7 +50,7 @@
         height: '100%',
         initialEditType: 'markdown',
         useCommandShortcut: true,
-        plugins: [ plugin.chart, plugin.uml, plugin.codeSyntaxHighlight, plugin.colorSyntax ]
+        plugins: [ plugin.chart, plugin.uml, plugin.codeSyntaxHighlight, plugin.colorSyntax, plugin.tableMergedCell ]
       });
     </script>
   </body>
