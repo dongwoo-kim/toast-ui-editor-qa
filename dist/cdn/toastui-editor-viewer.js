@@ -1,6 +1,6 @@
 /*!
  * @toast-ui/editor
- * @version 2.0.1 | Mon Apr 13 2020
+ * @version 2.0.1 | Tue Apr 14 2020
  * @author NHN FE Development Lab <dl_javascript@nhn.com>
  * @license MIT
  */
@@ -5412,8 +5412,10 @@ var Convertor = /*#__PURE__*/function () {
 
     var _options = options,
         linkAttribute = _options.linkAttribute,
-        customHTMLRenderer = _options.customHTMLRenderer;
+        customHTMLRenderer = _options.customHTMLRenderer,
+        extendedAutolinks = _options.extendedAutolinks;
     this.mdReader = new _toast_ui_toastmark__WEBPACK_IMPORTED_MODULE_1__["Parser"]({
+      autoLink: extendedAutolinks,
       disallowedHtmlBlockTags: ['br']
     });
     this.renderHTML = Object(_toast_ui_toastmark__WEBPACK_IMPORTED_MODULE_1__["createRenderHTML"])({
@@ -6317,6 +6319,7 @@ var ToastUIEditorViewer = /*#__PURE__*/function () {
     this.options = tui_code_snippet_object_extend__WEBPACK_IMPORTED_MODULE_1___default()({
       useDefaultHTMLSanitizer: true,
       linkAttribute: null,
+      extendedAutolinks: false,
       customConvertor: null,
       customHTMLRenderer: null
     }, options);
@@ -6324,10 +6327,13 @@ var ToastUIEditorViewer = /*#__PURE__*/function () {
     this.eventManager = new _eventManager__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]();
     this.commandManager = new _commandManager__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"](this);
     var linkAttribute = Object(_utils_common__WEBPACK_IMPORTED_MODULE_11__[/* sanitizeLinkAttribute */ "c"])(this.options.linkAttribute);
-    var customHTMLRenderer = this.options.customHTMLRenderer;
+    var _this$options = this.options,
+        customHTMLRenderer = _this$options.customHTMLRenderer,
+        extendedAutolinks = _this$options.extendedAutolinks;
     var rendererOptions = {
       linkAttribute: linkAttribute,
-      customHTMLRenderer: customHTMLRenderer
+      customHTMLRenderer: customHTMLRenderer,
+      extendedAutolinks: extendedAutolinks
     };
 
     if (this.options.customConvertor) {
@@ -6353,9 +6359,9 @@ var ToastUIEditorViewer = /*#__PURE__*/function () {
       });
     }
 
-    var _this$options = this.options,
-        el = _this$options.el,
-        initialValue = _this$options.initialValue;
+    var _this$options2 = this.options,
+        el = _this$options2.el,
+        initialValue = _this$options2.initialValue;
     var existingHTML = el.innerHTML;
     el.innerHTML = '';
     this.preview = new _mdPreview__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"](el, this.eventManager, this.convertor, _extends({}, rendererOptions, {

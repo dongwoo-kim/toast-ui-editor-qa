@@ -1,6 +1,6 @@
 /*!
  * @toast-ui/editor
- * @version 2.0.1 | Mon Apr 13 2020
+ * @version 2.0.1 | Tue Apr 14 2020
  * @author NHN FE Development Lab <dl_javascript@nhn.com>
  * @license MIT
  */
@@ -27538,8 +27538,10 @@ var convertor_Convertor = /*#__PURE__*/function () {
 
     var _options = options,
         linkAttribute = _options.linkAttribute,
-        customHTMLRenderer = _options.customHTMLRenderer;
+        customHTMLRenderer = _options.customHTMLRenderer,
+        extendedAutolinks = _options.extendedAutolinks;
     this.mdReader = new toastmark["Parser"]({
+      autoLink: extendedAutolinks,
       disallowedHtmlBlockTags: ['br']
     });
     this.renderHTML = Object(toastmark["createRenderHTML"])({
@@ -27795,6 +27797,7 @@ var viewer_ToastUIEditorViewer = /*#__PURE__*/function () {
     this.options = extend_default()({
       useDefaultHTMLSanitizer: true,
       linkAttribute: null,
+      extendedAutolinks: false,
       customConvertor: null,
       customHTMLRenderer: null
     }, options);
@@ -27802,10 +27805,13 @@ var viewer_ToastUIEditorViewer = /*#__PURE__*/function () {
     this.eventManager = new js_eventManager();
     this.commandManager = new commandManager(this);
     var linkAttribute = sanitizeLinkAttribute(this.options.linkAttribute);
-    var customHTMLRenderer = this.options.customHTMLRenderer;
+    var _this$options = this.options,
+        customHTMLRenderer = _this$options.customHTMLRenderer,
+        extendedAutolinks = _this$options.extendedAutolinks;
     var rendererOptions = {
       linkAttribute: linkAttribute,
-      customHTMLRenderer: customHTMLRenderer
+      customHTMLRenderer: customHTMLRenderer,
+      extendedAutolinks: extendedAutolinks
     };
 
     if (this.options.customConvertor) {
@@ -27831,9 +27837,9 @@ var viewer_ToastUIEditorViewer = /*#__PURE__*/function () {
       });
     }
 
-    var _this$options = this.options,
-        el = _this$options.el,
-        initialValue = _this$options.initialValue;
+    var _this$options2 = this.options,
+        el = _this$options2.el,
+        initialValue = _this$options2.initialValue;
     var existingHTML = el.innerHTML;
     el.innerHTML = '';
     this.preview = new mdPreview(el, this.eventManager, this.convertor, viewer_extends({}, rendererOptions, {
@@ -36612,6 +36618,7 @@ var __nedInstance = [];
  *     @param {Array.<string|toolbarItemsValue>} [options.toolbarItems] - toolbar items.
  *     @param {boolean} [options.hideModeSwitch=false] - hide mode switch tab bar
  *     @param {Array.<function|Array>} [options.plugins] - Array of plugins. A plugin can be either a function or an array in the form of [function, options].
+ *     @param {Object} [options.extendedAutolinks] - Using extended Autolinks specified in GFM spec
  *     @param {Object} [options.customConvertor] - convertor extention
  *     @param {string} [options.placeholder] - The placeholder text of the editable element.
  *     @param {Object} [options.linkAttribute] - Attributes of anchor element that should be rel, target, contenteditable, hreflang, type
@@ -36636,6 +36643,7 @@ var editor_ToastUIEditor = /*#__PURE__*/function () {
       toolbarItems: ['heading', 'bold', 'italic', 'strike', 'divider', 'hr', 'quote', 'divider', 'ul', 'ol', 'task', 'indent', 'outdent', 'divider', 'table', 'image', 'link', 'divider', 'code', 'codeblock'],
       hideModeSwitch: false,
       linkAttribute: null,
+      extendedAutolinks: false,
       customConvertor: null,
       customHTMLRenderer: null
     }, options);
@@ -36646,10 +36654,13 @@ var editor_ToastUIEditor = /*#__PURE__*/function () {
       useCommandShortcut: this.options.useCommandShortcut
     });
     var linkAttribute = sanitizeLinkAttribute(this.options.linkAttribute);
-    var customHTMLRenderer = this.options.customHTMLRenderer;
+    var _this$options = this.options,
+        customHTMLRenderer = _this$options.customHTMLRenderer,
+        extendedAutolinks = _this$options.extendedAutolinks;
     var rendererOptions = {
       linkAttribute: linkAttribute,
-      customHTMLRenderer: customHTMLRenderer
+      customHTMLRenderer: customHTMLRenderer,
+      extendedAutolinks: extendedAutolinks
     };
 
     if (this.options.customConvertor) {
@@ -36680,7 +36691,8 @@ var editor_ToastUIEditor = /*#__PURE__*/function () {
     this.i18n.setCode(this.options.language);
     this.setUI(this.options.UI || new defaultUI(this));
     this.toastMark = new toastmark["ToastMark"]('', {
-      disallowedHtmlBlockTags: ['br']
+      disallowedHtmlBlockTags: ['br'],
+      autoLink: extendedAutolinks
     });
     this.mdEditor = markdownEditor.factory(this.layout.getMdEditorContainerEl(), this.eventManager, this.toastMark, this.options);
     this.preview = new mdPreview(this.layout.getPreviewEl(), this.eventManager, this.convertor, editor_extends({}, rendererOptions, {

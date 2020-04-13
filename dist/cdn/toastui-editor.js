@@ -1,6 +1,6 @@
 /*!
  * @toast-ui/editor
- * @version 2.0.1 | Mon Apr 13 2020
+ * @version 2.0.1 | Tue Apr 14 2020
  * @author NHN FE Development Lab <dl_javascript@nhn.com>
  * @license MIT
  */
@@ -5537,8 +5537,10 @@ var Convertor = /*#__PURE__*/function () {
 
     var _options = options,
         linkAttribute = _options.linkAttribute,
-        customHTMLRenderer = _options.customHTMLRenderer;
+        customHTMLRenderer = _options.customHTMLRenderer,
+        extendedAutolinks = _options.extendedAutolinks;
     this.mdReader = new _toast_ui_toastmark__WEBPACK_IMPORTED_MODULE_1__["Parser"]({
+      autoLink: extendedAutolinks,
       disallowedHtmlBlockTags: ['br']
     });
     this.renderHTML = Object(_toast_ui_toastmark__WEBPACK_IMPORTED_MODULE_1__["createRenderHTML"])({
@@ -6442,6 +6444,7 @@ var ToastUIEditorViewer = /*#__PURE__*/function () {
     this.options = tui_code_snippet_object_extend__WEBPACK_IMPORTED_MODULE_1___default()({
       useDefaultHTMLSanitizer: true,
       linkAttribute: null,
+      extendedAutolinks: false,
       customConvertor: null,
       customHTMLRenderer: null
     }, options);
@@ -6449,10 +6452,13 @@ var ToastUIEditorViewer = /*#__PURE__*/function () {
     this.eventManager = new _eventManager__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]();
     this.commandManager = new _commandManager__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"](this);
     var linkAttribute = Object(_utils_common__WEBPACK_IMPORTED_MODULE_11__[/* sanitizeLinkAttribute */ "c"])(this.options.linkAttribute);
-    var customHTMLRenderer = this.options.customHTMLRenderer;
+    var _this$options = this.options,
+        customHTMLRenderer = _this$options.customHTMLRenderer,
+        extendedAutolinks = _this$options.extendedAutolinks;
     var rendererOptions = {
       linkAttribute: linkAttribute,
-      customHTMLRenderer: customHTMLRenderer
+      customHTMLRenderer: customHTMLRenderer,
+      extendedAutolinks: extendedAutolinks
     };
 
     if (this.options.customConvertor) {
@@ -6478,9 +6484,9 @@ var ToastUIEditorViewer = /*#__PURE__*/function () {
       });
     }
 
-    var _this$options = this.options,
-        el = _this$options.el,
-        initialValue = _this$options.initialValue;
+    var _this$options2 = this.options,
+        el = _this$options2.el,
+        initialValue = _this$options2.initialValue;
     var existingHTML = el.innerHTML;
     el.innerHTML = '';
     this.preview = new _mdPreview__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"](el, this.eventManager, this.convertor, _extends({}, rendererOptions, {
@@ -27130,6 +27136,7 @@ var __nedInstance = [];
  *     @param {Array.<string|toolbarItemsValue>} [options.toolbarItems] - toolbar items.
  *     @param {boolean} [options.hideModeSwitch=false] - hide mode switch tab bar
  *     @param {Array.<function|Array>} [options.plugins] - Array of plugins. A plugin can be either a function or an array in the form of [function, options].
+ *     @param {Object} [options.extendedAutolinks] - Using extended Autolinks specified in GFM spec
  *     @param {Object} [options.customConvertor] - convertor extention
  *     @param {string} [options.placeholder] - The placeholder text of the editable element.
  *     @param {Object} [options.linkAttribute] - Attributes of anchor element that should be rel, target, contenteditable, hreflang, type
@@ -27154,6 +27161,7 @@ var editor_ToastUIEditor = /*#__PURE__*/function () {
       toolbarItems: ['heading', 'bold', 'italic', 'strike', 'divider', 'hr', 'quote', 'divider', 'ul', 'ol', 'task', 'indent', 'outdent', 'divider', 'table', 'image', 'link', 'divider', 'code', 'codeblock'],
       hideModeSwitch: false,
       linkAttribute: null,
+      extendedAutolinks: false,
       customConvertor: null,
       customHTMLRenderer: null
     }, options);
@@ -27164,10 +27172,13 @@ var editor_ToastUIEditor = /*#__PURE__*/function () {
       useCommandShortcut: this.options.useCommandShortcut
     });
     var linkAttribute = Object(utils_common["c" /* sanitizeLinkAttribute */])(this.options.linkAttribute);
-    var customHTMLRenderer = this.options.customHTMLRenderer;
+    var _this$options = this.options,
+        customHTMLRenderer = _this$options.customHTMLRenderer,
+        extendedAutolinks = _this$options.extendedAutolinks;
     var rendererOptions = {
       linkAttribute: linkAttribute,
-      customHTMLRenderer: customHTMLRenderer
+      customHTMLRenderer: customHTMLRenderer,
+      extendedAutolinks: extendedAutolinks
     };
 
     if (this.options.customConvertor) {
@@ -27198,7 +27209,8 @@ var editor_ToastUIEditor = /*#__PURE__*/function () {
     this.i18n.setCode(this.options.language);
     this.setUI(this.options.UI || new defaultUI(this));
     this.toastMark = new toastmark["ToastMark"]('', {
-      disallowedHtmlBlockTags: ['br']
+      disallowedHtmlBlockTags: ['br'],
+      autoLink: extendedAutolinks
     });
     this.mdEditor = markdownEditor.factory(this.layout.getMdEditorContainerEl(), this.eventManager, this.toastMark, this.options);
     this.preview = new mdPreview["a" /* default */](this.layout.getPreviewEl(), this.eventManager, this.convertor, editor_extends({}, rendererOptions, {
