@@ -2365,7 +2365,7 @@ module.exports = forEachOwnProperties;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return sanitizeLinkAttribute; });
 /* harmony import */ var tui_code_snippet_type_isUndefined__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
 /* harmony import */ var tui_code_snippet_type_isUndefined__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tui_code_snippet_type_isUndefined__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var tui_code_snippet_request_sendHostname__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(44);
+/* harmony import */ var tui_code_snippet_request_sendHostname__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(45);
 /* harmony import */ var tui_code_snippet_request_sendHostname__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(tui_code_snippet_request_sendHostname__WEBPACK_IMPORTED_MODULE_1__);
 
 
@@ -3213,7 +3213,7 @@ module.exports = forEach;
 
 
 var isUndefined = __webpack_require__(8);
-var isNull = __webpack_require__(49);
+var isNull = __webpack_require__(50);
 
 /**
  * Check whether the given variable is existing or not.
@@ -5294,9 +5294,9 @@ var MarkdownPreview = /*#__PURE__*/function (_Preview) {
 /* harmony import */ var tui_code_snippet_collection_forEachOwnProperties__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tui_code_snippet_collection_forEachOwnProperties__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var tui_code_snippet_type_isUndefined__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8);
 /* harmony import */ var tui_code_snippet_type_isUndefined__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(tui_code_snippet_type_isUndefined__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var tui_code_snippet_type_isFalsy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(45);
+/* harmony import */ var tui_code_snippet_type_isFalsy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(46);
 /* harmony import */ var tui_code_snippet_type_isFalsy__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tui_code_snippet_type_isFalsy__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var tui_code_snippet_enum_enum__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(46);
+/* harmony import */ var tui_code_snippet_enum_enum__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(47);
 /* harmony import */ var tui_code_snippet_enum_enum__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(tui_code_snippet_enum_enum__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _utils_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(23);
 /**
@@ -6115,7 +6115,8 @@ module.exports = safeEvent;
 // extracted by mini-css-extract-plugin
 
 /***/ }),
-/* 43 */
+/* 43 */,
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6144,7 +6145,7 @@ module.exports = isTruthy;
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6156,7 +6157,7 @@ module.exports = isTruthy;
 
 
 var isUndefined = __webpack_require__(8);
-var imagePing = __webpack_require__(50);
+var imagePing = __webpack_require__(51);
 
 var ms7days = 7 * 24 * 60 * 60 * 1000;
 
@@ -6219,7 +6220,7 @@ module.exports = sendHostname;
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6230,7 +6231,7 @@ module.exports = sendHostname;
 
 
 
-var isTruthy = __webpack_require__(43);
+var isTruthy = __webpack_require__(44);
 
 /**
  * Check whether the given variable is falsy or not.
@@ -6247,7 +6248,7 @@ module.exports = isFalsy;
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6412,7 +6413,7 @@ module.exports = Enum;
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6715,8 +6716,8 @@ ToastUIEditorViewer.WwTableSelectionManager = null;
 /* harmony default export */ __webpack_exports__["a"] = (ToastUIEditorViewer);
 
 /***/ }),
-/* 48 */,
-/* 49 */
+/* 49 */,
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6742,7 +6743,7 @@ module.exports = isNull;
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6798,7 +6799,6 @@ module.exports = imagePing;
 
 
 /***/ }),
-/* 51 */,
 /* 52 */,
 /* 53 */,
 /* 54 */,
@@ -6811,7 +6811,7 @@ module.exports = imagePing;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _viewer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(47);
+/* harmony import */ var _viewer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(48);
 /* harmony import */ var _css_contents_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(42);
 /* harmony import */ var _css_contents_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_contents_css__WEBPACK_IMPORTED_MODULE_1__);
 /**
