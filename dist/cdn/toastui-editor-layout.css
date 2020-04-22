@@ -1,6 +1,6 @@
 /*!
  * @toast-ui/editor
- * @version 2.0.1 | Sat Apr 18 2020
+ * @version 2.0.1 | Wed Apr 22 2020
  * @author NHN FE Development Lab <dl_javascript@nhn.com>
  * @license MIT
  */
@@ -216,7 +216,8 @@
   position: relative;
   border: 1px solid #e5e5e5;
   height: 100%;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', '나눔바른고딕',
+    'Nanum Barun Gothic', '맑은고딕', 'Malgun Gothic', sans-serif;
 }
 
 .tui-editor-defaultUI button {
@@ -935,39 +936,6 @@
   border: 1px solid #ebebeb;
 }
 
-.CodeMirror .cm-header {
-  font-weight: bold;
-  color: inherit;
-}
-
-.CodeMirror .cm-header-1 {
-  font-size: 24px;
-}
-
-.CodeMirror .cm-header-2 {
-  font-size: 22px;
-}
-
-.CodeMirror .cm-header-3 {
-  font-size: 20px;
-}
-
-.CodeMirror .cm-header-4 {
-  font-size: 18px;
-}
-
-.CodeMirror .cm-header-5 {
-  font-size: 16px;
-}
-
-.CodeMirror .cm-header-6 {
-  font-size: 14px;
-}
-
-.CodeMirror .cm-variable-2 {
-  color: inherit;
-}
-
 .tui-editor-pseudo-clipboard {
   position: fixed;
   left: -1000px;
@@ -1284,5 +1252,129 @@
   .te-dropdown-toolbar {
     max-width: none;
   }
+}
+
+.te-md-container .CodeMirror {
+  font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', '나눔바른고딕',
+    'Nanum Barun Gothic', '맑은고딕', 'Malgun Gothic', sans-serif;
+  color: #222;
+}
+
+.tui-md-heading1 {
+  font-size: 24px;
+}
+
+.tui-md-heading2 {
+  font-size: 22px;
+}
+
+.tui-md-heading3 {
+  font-size: 20px;
+}
+
+.tui-md-heading4 {
+  font-size: 18px;
+}
+
+.tui-md-heading5 {
+  font-size: 16px;
+}
+
+.tui-md-heading6 {
+  font-size: 14px;
+}
+
+.tui-md-strong,
+.tui-md-heading,
+.tui-md-list-item.tui-md-list-item-bullet,
+.tui-md-list-item.tui-md-meta {
+  font-weight: bold;
+}
+
+.tui-md-emph {
+  font-style: italic;
+}
+
+.tui-md-strike {
+  text-decoration: line-through;
+}
+
+.tui-md-strike.tui-md-delimiter {
+  text-decoration: none;
+}
+
+.tui-md-delimiter,
+.tui-md-thematic-break,
+.tui-md-link,
+.tui-md-table {
+  color: #ddd;
+}
+
+.tui-md-block-quote {
+  color: #ccc;
+}
+
+.tui-md-code-block.tui-md-meta {
+  color: #aaa;
+}
+
+.tui-md-meta,
+.tui-md-link.tui-md-link-url.tui-md-marked-text {
+  color: #999;
+}
+
+.tui-md-block-quote.tui-md-marked-text,
+.tui-md-list-item.tui-md-meta {
+  color: #555;
+}
+
+.tui-md-table.tui-md-marked-text {
+  color: #222;
+}
+
+.tui-md-link.tui-md-link-desc.tui-md-marked-text {
+  color: #00a9ff;
+}
+
+.tui-md-list-item-odd.tui-md-list-item-bullet {
+  color: #2885b5;
+}
+
+.tui-md-list-item-even.tui-md-list-item-bullet {
+  color: #cb4848;
+}
+
+.tui-md-code.tui-md-marked-text {
+  color: #c1798b;
+}
+
+.tui-md-code {
+  background-color: #f9f2f4;
+  padding: 2px 0;
+  letter-spacing: -0.3px;
+}
+
+.tui-md-code.tui-md-delimiter.start {
+  padding-left: 2px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.tui-md-code.tui-md-delimiter.end {
+  padding-right: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.tui-md-code-block.CodeMirror-linebackground {
+  left: 20px;
+  right: 20px;
+  background-color: #f5f7f8;
+}
+
+.tui-md-code.tui-md-marked-text,
+.tui-md-code-block.tui-md-marked-text {
+  font-family: Consolas, Courier, 'Apple SD 산돌고딕 Neo', -apple-system, 'Lucida Grande',
+    'Apple SD Gothic Neo', '맑은 고딕', 'Malgun Gothic', 'Segoe UI', '돋움', dotum, sans-serif;
 }
 

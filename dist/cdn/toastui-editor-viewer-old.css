@@ -5,6 +5,10 @@
  * @license MIT
  */
 @charset "utf-8";
+.CodeMirror {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 .tui-editor-contents *:not(table) {
   line-height: 160%;
   box-sizing: content-box;
@@ -25,7 +29,7 @@
 
 .tui-editor-contents p {
   margin: 10px 0;
-  color: #222;
+  color: #555;
 }
 
 .tui-editor-contents > h1:first-of-type,
@@ -36,73 +40,52 @@
 .tui-editor-contents h1,
 .tui-editor-contents h2,
 .tui-editor-contents h3,
-.tui-editor-contents h4,
-.tui-editor-contents h5,
-.tui-editor-contents h6 {
+.tui-editor-contents h5 {
   font-weight: bold;
-  color: #222;
 }
 
 .tui-editor-contents h1 {
-  font-size: 24px;
+  font-size: 1.6rem;
   line-height: 28px;
   border-bottom: 3px double #999;
   margin: 52px 0 15px 0;
   padding-bottom: 7px;
+  color: #000;
 }
 
 .tui-editor-contents h2 {
-  font-size: 22px;
+  font-size: 1.3rem;
   line-height: 23px;
   border-bottom: 1px solid #dbdbdb;
-  margin: 20px 0 13px 0;
+  margin: 30px 0 13px 0;
   padding-bottom: 7px;
-}
-
-.tui-editor-contents h3 {
-  font-size: 20px;
-  margin: 18px 0 2px;
-}
-
-.tui-editor-contents h4 {
-  font-size: 18px;
-  margin: 10px 0 2px;
+  color: #333;
 }
 
 .tui-editor-contents h3,
 .tui-editor-contents h4 {
+  font-size: 1.2rem;
   line-height: 18px;
-}
-
-.tui-editor-contents h5 {
-  font-size: 16px;
-}
-
-.tui-editor-contents h6 {
-  font-size: 14px;
+  margin: 20px 0 2px;
+  color: #333;
 }
 
 .tui-editor-contents h5,
 .tui-editor-contents h6 {
+  font-size: 1rem;
   line-height: 17px;
-  margin: 9px 0 -4px;
-}
-
-.tui-editor-contents del {
-  color: #999;
+  margin: 10px 0 -4px;
+  color: #333;
 }
 
 .tui-editor-contents blockquote {
-  margin: 14px 0;
-  border-left: 4px solid #e5e5e5;
-  padding: 0 12px;
-  color: #999;
+  margin: 15px 0;
 }
 
-.tui-editor-contents blockquote p,
-.tui-editor-contents blockquote ul,
-.tui-editor-contents blockquote ol {
-  color: #999;
+.tui-editor-contents blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777;
 }
 
 .tui-editor-contents blockquote > :first-child {
@@ -128,11 +111,9 @@
 }
 
 .tui-editor-contents code {
-  color: #c1798b;
-  background-color: #f9f2f4;
-  padding: 2px 3px;
+  color: #c1788b;
+  padding: 4px 4px 2px 0;
   letter-spacing: -0.3px;
-  border-radius: 2px;
 }
 
 .tui-editor-contents pre code {
@@ -156,7 +137,7 @@
 
 .tui-editor-contents table {
   margin: 2px 0 14px;
-  color: #222;
+  color: #555;
   width: auto;
   border-collapse: collapse;
   box-sizing: border-box;
@@ -169,13 +150,13 @@
 }
 
 .tui-editor-contents table td {
-  border: 1px solid #e5e5e5;
+  border: 1px solid #eaeaea;
 }
 
 .tui-editor-contents table th {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid #72777b;
   border-top: 0;
-  background-color: #555;
+  background-color: #7b8184;
   font-weight: 300;
   color: #fff;
   padding-top: 6px;
@@ -186,36 +167,14 @@
 .tui-editor-contents ol,
 .tui-editor-contents dir {
   display: block;
-  list-style-type: none;
-  padding-left: 15px;
+  list-style-type: disc;
+  padding-left: 17px;
   margin: 6px 0 10px;
-  color: #222;
+  color: #555;
 }
 
 .tui-editor-contents ol {
-  list-style-type: none;
-  counter-reset: li;
-}
-
-.tui-editor-contents ol li {
-  counter-increment: li;
-}
-
-.tui-editor-contents ul li::before,
-.tui-editor-contents ol li::before {
-  color: #aaa;
-  display: inline-block;
-  position: absolute;
-  width: 1em;
-  margin-left: -1em;
-}
-
-.tui-editor-contents ul li::before {
-  content: '\2022';
-}
-
-.tui-editor-contents ol li::before {
-  content: counter(li) '.';
+  list-style-type: decimal;
 }
 
 .tui-editor-contents ul ul,
@@ -232,7 +191,7 @@
 }
 
 .tui-editor-contents ul p,
-.tui-editor-contents ol p {
+ol p {
   margin: 0;
 }
 
@@ -249,11 +208,11 @@
 
 .tui-editor-contents a {
   text-decoration: underline;
-  color: #00a9ff;
+  color: #5286bc;
 }
 
 .tui-editor-contents a:hover {
-  color: #00a9ff;
+  color: #007cff;
 }
 
 .tui-editor-contents {
@@ -265,8 +224,8 @@
 .tui-editor-contents .task-list-item {
   border: 0;
   list-style: none;
-  padding-left: 23px;
-  margin-left: -18px;
+  padding-left: 22px;
+  margin-left: -22px;
   min-height: 20px;
 }
 
@@ -278,7 +237,7 @@
   height: 18px;
   width: 18px;
   position: absolute;
-  left: 14px;
+  left: 0;
   top: 1px;
   cursor: pointer;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAADdJREFUKBVjvHv37n8GMgALSI+SkhJJWu/du8fARJIOJMWjGpECA505GjjoIYLEB6dVUNojFQAA/1MJUFWet/4AAAAASUVORK5CYII=');
