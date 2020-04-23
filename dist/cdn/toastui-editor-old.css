@@ -1464,7 +1464,7 @@
 .tui-editor-contents ul > li::before {
   content: '';
   margin-top: 6px;
-  margin-left: -1em;
+  margin-left: -0.9em;
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -1567,11 +1567,12 @@
 
 .tui-editor-contents .te-preview-highlight {
   position: relative;
+  z-index: 0;
 }
 
 .tui-editor-contents .te-preview-highlight::after {
   content: '';
-  background-color: #fffac1;
+  background-color: rgba(255, 245, 131, 0.5);
   border-radius: 4px;
   z-index: -1;
   position: absolute;
@@ -1597,14 +1598,6 @@
 .tui-editor-contents th.te-preview-highlight {
   background-color: transparent;
   color: #222;
-}
-
-.tui-editor-contents pre.te-preview-highlight {
-  background-color: #fffac1;
-}
-
-.tui-editor-contents pre.te-preview-highlight::after {
-  background-color: #fff8bd;
 }
 
 .te-md-container .CodeMirror {

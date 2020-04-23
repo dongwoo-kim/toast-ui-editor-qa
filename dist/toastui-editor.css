@@ -1464,7 +1464,7 @@
 .tui-editor-contents ul > li::before {
   content: '';
   margin-top: 6px;
-  margin-left: -1em;
+  margin-left: -0.9em;
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -1567,11 +1567,12 @@
 
 .tui-editor-contents .te-preview-highlight {
   position: relative;
+  z-index: 0;
 }
 
 .tui-editor-contents .te-preview-highlight::after {
   content: '';
-  background-color: #fffac1;
+  background-color: rgba(255, 245, 131, 0.5);
   border-radius: 4px;
   z-index: -1;
   position: absolute;
@@ -1597,14 +1598,6 @@
 .tui-editor-contents th.te-preview-highlight {
   background-color: transparent;
   color: #222;
-}
-
-.tui-editor-contents pre.te-preview-highlight {
-  background-color: #fffac1;
-}
-
-.tui-editor-contents pre.te-preview-highlight::after {
-  background-color: #fff8bd;
 }
 
 .te-md-container .CodeMirror {
@@ -1671,7 +1664,8 @@
   color: #ccc;
 }
 
-.tui-md-code-block.tui-md-meta {
+.tui-md-code-block.tui-md-meta,
+.tui-md-code.tui-md-delimiter {
   color: #aaa;
 }
 
@@ -1706,7 +1700,7 @@
 }
 
 .tui-md-code {
-  background-color: #f9f2f4;
+  background-color: rgba(193, 121, 139, 0.1);
   padding: 2px 0;
   letter-spacing: -0.3px;
 }
@@ -1729,9 +1723,9 @@
   background-color: #f5f7f8;
 }
 
-.tui-md-code.tui-md-marked-text,
-.tui-md-code-block.tui-md-marked-text {
-  font-family: Consolas, Courier, 'Apple SD 산돌고딕 Neo', -apple-system, 'Lucida Grande',
-    'Apple SD Gothic Neo', '맑은 고딕', 'Malgun Gothic', 'Segoe UI', '돋움', dotum, sans-serif;
+.tui-md-code,
+.tui-md-code-block {
+  font-family: Consolas, Courier, 'Lucida Grande', '나눔바른고딕', 'Nanum Barun Gothic', '맑은고딕',
+    'Malgun Gothic', sans-serif;
 }
 

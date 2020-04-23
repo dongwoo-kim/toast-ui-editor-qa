@@ -14574,6 +14574,7 @@ var baseConvertors = {
   },
   codeBlock: function codeBlock(node) {
     var infoWords = node.info ? node.info.split(/\s+/) : [];
+    var preClasses = [];
     var codeAttrs = {};
 
     if (node.fenceLength > 3) {
@@ -14582,13 +14583,14 @@ var baseConvertors = {
 
     if (infoWords.length > 0 && infoWords[0].length > 0) {
       var lang = infoWords[0];
+      preClasses.push("lang-" + lang);
       codeAttrs['data-language'] = lang;
-      codeAttrs.class = "lang-" + lang;
     }
 
     return [{
       type: 'openTag',
-      tagName: 'pre'
+      tagName: 'pre',
+      classNames: preClasses
     }, {
       type: 'openTag',
       tagName: 'code',
@@ -14744,7 +14746,7 @@ codemirror_default.a.commands.indentLessOrderedList = function (cm) {
 
 
 codemirror_default.a.commands.fixOrderedListNumber = function (cm) {
-  if (cm.getOption('disableInput')) {
+  if (cm.getOption('disableInput') || !!cm.state.isCursorInCodeBlock) {
     return codemirror_default.a.Pass;
   }
 
@@ -14930,7 +14932,7 @@ codemirror_default.a.overlayMode = function (base, overlay, combine) {
 
 /*eslint-disable */
 
-var continuelist_listRE = /^(\s*)(>[> ]*|[*+-] \[[x ]\]\s|[*+-]\s|(\d+)([.)]))(\s*)/,
+var continuelist_listRE = /^(\s*)(>[> ]*|[*+-] \[[x ]\]\s|[*+-]\s|(\d+)([.)]\s))(\s*)/,
     emptyListRE = /^(\s*)(>[> ]*|[*+-] \[[x ]\]|[*+-]|(\d+)[.)])(\s*)$/,
     unorderedListRE = /[*+-]\s/;
 
@@ -14943,7 +14945,7 @@ codemirror_default.a.commands.indentOrderedList = function (cm) {
     var line = cm.getLine(pos.line);
     var cursorBeforeTextInline = line.substr(0, pos.ch);
 
-    if (continuelist_listRE.test(cursorBeforeTextInline) || cm.somethingSelected()) {
+    if (!cm.state.isCursorInCodeBlock && (continuelist_listRE.test(cursorBeforeTextInline) || cm.somethingSelected())) {
       cm.indentSelection('add');
     } else {
       cm.execCommand('insertSoftTab');
@@ -14954,7 +14956,7 @@ codemirror_default.a.commands.indentOrderedList = function (cm) {
 };
 
 codemirror_default.a.commands.newlineAndIndentContinueMarkdownList = function (cm) {
-  if (cm.getOption('disableInput')) return codemirror_default.a.Pass;
+  if (cm.getOption('disableInput') || !!cm.state.isCursorInCodeBlock) return codemirror_default.a.Pass;
   var ranges = cm.listSelections(),
       replacements = [];
 
@@ -17377,7 +17379,9 @@ var markdownEditor_MarkdownEditor = /*#__PURE__*/function (_CodeMirrorExt) {
     var mdLine = line + 1;
     var mdCh = this.cm.getLine(line).length === ch ? ch : ch + 1;
     var mdNode = this.toastMark.findNodeAtPosition([mdLine, mdCh]);
-    var state = null;
+    var state = null; // To prevent to execute codemirror command in codeblock
+
+    this.cm.state.isCursorInCodeBlock = mdNode && mdNode.type === 'codeBlock';
     this.eventManager.emit('cursorActivity', {
       source: 'markdown',
       cursor: {
@@ -25630,11 +25634,10 @@ var wysiwygEditor_WysiwygEditor = /*#__PURE__*/function () {
     this.eventManager = eventManager;
     this.editorContainerEl = el;
     this._height = 0;
-    this._linkAttribute = options.linkAttribute;
     this._silentChange = false;
     this._keyEventHandlers = {};
     this._managers = {};
-    this._linkAttribute = {};
+    this._linkAttribute = options.linkAttribute || {};
 
     this._initEvent();
 

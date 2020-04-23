@@ -3313,6 +3313,7 @@ var baseConvertors = {
   },
   codeBlock: function codeBlock(node) {
     var infoWords = node.info ? node.info.split(/\s+/) : [];
+    var preClasses = [];
     var codeAttrs = {};
 
     if (node.fenceLength > 3) {
@@ -3321,13 +3322,14 @@ var baseConvertors = {
 
     if (infoWords.length > 0 && infoWords[0].length > 0) {
       var lang = infoWords[0];
+      preClasses.push("lang-" + lang);
       codeAttrs['data-language'] = lang;
-      codeAttrs.class = "lang-" + lang;
     }
 
     return [{
       type: 'openTag',
-      tagName: 'pre'
+      tagName: 'pre',
+      classNames: preClasses
     }, {
       type: 'openTag',
       tagName: 'code',
